@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { getSavedMatches } from "../adapter/db";
+import { clearAll, getSavedMatches } from "../adapter/db";
 import { userContext } from "../App";
 import MatchItem from "../components/MatchItem/MatchItem";
+import { NotificationManager } from "react-notifications";
 
 export const savedItemsContext = createContext();
 
@@ -9,6 +10,14 @@ function PersonalPage() {
   const { user } = useContext(userContext);
   const [matches, setMatches] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const handleClearAll = () => {
+    const ids = matches?.map((match) => match.id);
+    clearAll(ids).then(() => {
+      NotificationManager.success("Items cleared!");
+      setMatches([]);
+    });
+  };
 
   useEffect(() => {
     getSavedMatches(user?.uid)
@@ -30,7 +39,7 @@ function PersonalPage() {
             <div className="right">
               <h2>{user?.displayName}</h2>
               <h5>{user?.email}</h5>
-              <button>Clear all</button>
+              <button onClick={handleClearAll}>Clear all</button>
             </div>
           </div>
         </div>

@@ -13,6 +13,7 @@ import { fetchAllMatches } from "./adapter/xhr";
 import PersonalPage from "./pages/PersonalPage";
 import AllMathesPage from "./pages/AllMathesPage";
 import Footer from "./components/Footer/Footer";
+import { NotificationContainer } from "react-notifications";
 
 export const userContext = createContext();
 export const matchContext = createContext();
@@ -68,6 +69,8 @@ function App() {
           <Footer />
         </matchContext.Provider>
       </userContext.Provider>
+
+      <NotificationContainer />
     </Router>
   );
 }

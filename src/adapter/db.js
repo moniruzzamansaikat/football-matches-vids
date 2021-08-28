@@ -34,3 +34,16 @@ export const removeDocById = async (id) => {
       console.error("Error removing document: ", error);
     });
 };
+
+// clear all data
+export const clearAll = async (ids) => {
+  ids.forEach((id) => {
+    deleteDoc(doc(collection(db, "matches"), id))
+      .then(function () {
+        return "Item removed !";
+      })
+      .catch(function (error) {
+        console.error("Error removing document: ", error);
+      });
+  });
+};

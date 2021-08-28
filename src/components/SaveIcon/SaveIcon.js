@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { NotificationManager } from "react-notifications";
 import { useHistory } from "react-router-dom";
 import { saveNewMatch } from "../../adapter/db";
 import { userContext } from "../../App";
@@ -15,6 +16,7 @@ function SaveIcon({ match }) {
         ...match,
         userId: user.uid,
       });
+      NotificationManager.success("Item saved !");
     }
   };
 

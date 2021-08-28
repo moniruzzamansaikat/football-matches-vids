@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { NotificationManager } from "react-notifications";
 import { useHistory } from "react-router-dom";
 import { removeDocById } from "../../adapter/db";
 import { userContext } from "../../App";
@@ -7,13 +8,13 @@ import { savedItemsContext } from "../../pages/PersonalPage";
 function Filled({ match }) {
   const { user } = useContext(userContext);
   const { setMatches } = useContext(savedItemsContext);
-  const history = useHistory();
 
   const handleClick = () => {
     const id = match?.id;
 
     removeDocById(id).then((result) => {
       setMatches((prevMatches) => prevMatches.filter((mtch) => mtch.id !== id));
+      NotificationManager.info("Item removed !");
     });
   };
 
