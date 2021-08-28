@@ -1,38 +1,252 @@
-.App {
-  text-align: center;
+/* global style */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 0;
+  font-family: "Open Sans Condensed", sans-serif;
+  background-color: #f0f0f0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.top_and_nav {
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+
+  top: 0;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.container {
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+img {
+  width: 100%;
+}
+
+/* top header design */
+.top_header {
+  height: 90px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
+  border-bottom: 1px solid #c4c4c4;
+  background-color: #fff;
+  top: 0;
+  padding: 0 1rem;
+}
+
+.top_header img {
+  width: 60px;
+  justify-self: end;
+}
+
+@media (max-width: 768px) {
+  .top_header img {
+    justify-self: start;
+  }
+}
+
+.top_header #login_link {
+  text-decoration: none;
+  font-weight: 600;
+  color: #0f0f0f;
+  justify-self: end;
+}
+
+/* Main Navbar design */
+nav.main_nav {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 60px;
+  background-color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+nav.main_nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+nav.main_nav ul li {
+  margin: 0 12px;
+}
+
+nav.main_nav ul li a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  color: #000f2c;
+}
+
+nav.main_nav ul li a:hover {
+  color: #226b6e;
+}
+
+/* Main banner */
+.main_banner {
+  position: relative;
+  height: 90vh;
+  margin-top: 150px;
+
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .main_banner {
+    height: 100vh;
+    min-height: 100vh;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+.main_banner .overlay {
+  width: 100%;
+  height: 100%;
+  background-color: #07070788;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.main_banner .content {
+  z-index: 1000 !important;
+}
+
+.main_banner img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.main_banner h1 {
+  margin: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 3.5rem;
+  word-spacing: 10px;
+  margin-bottom: 10px;
+}
+
+.main_banner p {
+  color: #fff;
+  word-spacing: 2px;
+  font-family: sans-serif;
+  line-height: 28px;
+}
+
+.main_banner button {
+  background-color: #ec4502;
+  padding: 8px 1rem;
+  outline: 0;
+  color: #f0f0f0;
+  border: 0;
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+.main_banner button:hover {
+  opacity: 0.8;
+}
+
+/* Home page match grid */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
+}
+
+.grid.home {
+  margin: 2rem 0;
+}
+
+.grid .match_item {
+  border-radius: 5px;
+  height: 300px;
+  overflow: hidden;
+
+  position: relative;
+
+  display: flex;
+  align-items: flex-end;
+}
+
+.match_item .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+}
+
+.match_item img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+.match_item .content {
+  padding: 1rem;
+  color: #fff;
+  z-index: 1000;
+}
+
+.match_item .content h1 {
+  margin: 2px 0;
+}
+
+.match_item .content small {
+  display: block;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.match_item .content .btn {
+  padding: 5px 10px;
+  outline: 0;
+  border: 0;
+  background: rgb(255, 105, 5);
+  display: inline-block;
+  margin-top: 10px;
+  color: #0c0c0c;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  display: inline-block;
+}
+
+.match_item .content .btn.btn-link {
+  margin-left: 10px;
+  background-color: rgb(255, 255, 255);
+}
+
+.match_item .content .btn:hover {
+  background: rgba(189, 78, 4, 0.938);
+}
+
+.match_item .content .btn.btn-link:hover {
+  background: rgba(216, 208, 203, 0.938);
 }
