@@ -1,15 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { fetchAllMatches } from "../adapter/xhr";
+import React, { useContext } from "react";
 import MatchItem from "../components/MatchItem/MatchItem";
+import { matchContext } from "../App";
 
 function HomePage() {
-  const [matches, setMatches] = useState([]);
-
-  useEffect(() => {
-    fetchAllMatches(4).then((mchs) => {
-      setMatches(mchs);
-    });
-  }, []);
+  const { matches } = useContext(matchContext);
 
   return (
     <div className="grid home">
